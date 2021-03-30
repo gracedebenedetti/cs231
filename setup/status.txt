@@ -1,0 +1,2 @@
+Grace de Benedetti
+Status: Fully installed Kali on home laptop. I intend to use this download from virtual box for this class.
