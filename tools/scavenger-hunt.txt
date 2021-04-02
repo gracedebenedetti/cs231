@@ -1,0 +1,37 @@
+1. What's your computer's IP address for its current Internet connection? (Bonus: how can you tell the difference between your Ethernet IP and your wireless IP if you have both connections active?)
+    IP address: 137.22.166.158 for eduroam
+    I think ethernet addresses have colons between the sections of numbers and letters whereas the IP addresses have periods and only have numbers.
+
+2. How can you determine the IP address associated with a given host name?
+    Use the ping command with the host name. In the terminal, type ping [host name] and it will output the IP address for the given host name.
+    I typed "ping Graces-MacBook-Pro-2.local"
+    and got the output 64 bytes from 127.0.0.1: icmp_seq=0 ttl=64 time=0.043 ms
+
+3. How can you determine the host name(s) associated with a given IP address?
+    nslookup command in the terminal will give the host name. Type nslookup [IP address]. I typed: "nslookup 137.22.166.158" and got the output:
+    Server:		137.22.198.40
+    Address:	137.22.198.40#53
+
+    158.166.22.137.IN-ADDR.ARPA	name = eduroam-166-158.dyn.carleton.edu.
+
+4. How can you copy a file from one computer to another? Or more to the point, if you create a file on the Kali virtual machine and you want to put it someplace where you can save it, like your your Math/CS account on mantis.mathcs.carleton.edu, how do you go about it from the Kali command-line interface?
+    scp [location of file] [destination for file]
+    Where the location contains the [name of the account on the host computer]@[hostname where file is]:[name of directory of source file]/[filename]
+    And destination contains [name of the account on the destination computer]@[hostname where file will be sent]:[name of directory where copy will go]/[copy filename]
+
+5. How can you tell whether there's a process listening on a given port (e.g. port 80 or port 22) on a given host?
+    lsof -i :[port number] will output what is listening or nothing if the port is not listening.
+
+6. How can you tell which ports have processes listening on them on a given host?
+    sudo lsof -nP -iTCP -sTCP:LISTEN This command gives a list of all listening ports.
+
+7. How can you retrieve and save a given web page (say http://google.com/ or http://carleton.edu/) in a file on your system?
+    wget -O "[url]" [filename] will retrieve and save a given web page in a file on my system labeled with the given filename
+
+8. How can you view the HTTP headers sent back from a specified web server when you request one of its pages?
+    curl -IL [url] will output the response headers. I believe if you leave out the I and just do -L it will be all headers.
+
+    There were two more options that I didn't quite understand, but I will list them too: wget -s and telnet
+
+9. [Super bonus question] Is there a command-line-only way to view the HTTP headers that *my* computer sends when I run the commands in the previous two questions?
+    I'm not quite sure about this, but I looked into what a response header is, and then I found request headers. I think that the headers my computer sends are these request headers. The way to find them is by using curl -v [url].
