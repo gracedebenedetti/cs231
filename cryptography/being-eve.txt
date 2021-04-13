@@ -1,0 +1,44 @@
+Skyler and Grace being Eve
+
+Diffie Hellman:
+We know g=17 and p=61
+Alice sent Bob the number 46. Therefore in the equation A = g^x mod p, A = 46
+Bob sent Alice the number 5. Therefore in the equation B = g^y mod p, B = 5
+
+Alice has come up with some number x<p
+Bob has come up with some number y<p
+
+We know:
+A = g^x mod p, where A = 46
+B = g^y mod p, where B = 5
+
+Therefore:
+46 = 17^x mod 61
+5 = 17^y mod 61
+
+Solving for x, we see that x = 14 and y = 26
+
+B^x mod p = A^y mod p = shared secret
+5^14 mod 61 = 46^26 mod 61 = shared secret
+12 = 12 = shared secret
+
+    Where we could have gone wrong:
+    If we were using bigger numbers, and didn't restrict x<p and y<p, then there could be multiple possible values of x and y that give us the same secret number. This happens when calculating 46 = 17^x mod 61 and 5 = 17^y mod 61, because when using mod with bigger numbers, there are multiple solutions for x and y.
+
+RSA:
+We know n = pq and n = 4661. The only factors of 4661 are 1, 4661, 59, and 79. Both 59 and 79 are prime numbers. Therefore p and q are 59 and 79. We found these values using rsaFinder (in being-eve.py).
+
+To find d, we calculate ed mod (p-1)(q-1) = 1. There are multiple solutions to this equation, so we developed a function dfinder (in being-eve.py), that will find all possible values of d. We used the output d = 2335 to decrypt the message. We tested this value through the equations y^d mod 4661 = x and x^31 mod 4661 = y. We used some number from the encrypted message as y to test d. In our case, we chose 414.
+
+We also found for any d output of the dFinder function, we can decrypt the message from Alice to Bob.
+
+Using decrypt.py (in being-eve.py), we looped through the encrypted message and performed the calculation for each number in the encrypted message, y, (y^2335) mod 4661 to get the number for the letter in the original message, x.
+
+This was the output for the number conversion:
+message: [68, 101, 97, 114, 32, 66, 111, 98, 44, 32, 67, 104, 101, 99, 107, 32, 116, 104, 105, 115, 32, 111, 117, 116, 46, 32, 32, 104, 116, 116, 112, 115, 58, 47, 47, 119, 119, 119, 46, 115, 99, 104, 110, 101, 105, 101, 114, 46, 99, 111, 109, 47, 98, 108, 111, 103, 47, 97, 114, 99, 104, 105, 118, 101, 115, 47, 50, 48, 49, 55, 47, 49, 50, 47, 101, 45, 109, 97, 105, 108, 95, 116, 114, 97, 99, 107, 105, 110, 103, 95, 49, 46, 104, 116, 109, 108, 32, 89, 105, 107, 101, 115, 33, 32, 89, 111, 117, 114, 32, 102, 114, 105, 101, 110, 100, 44, 32, 65, 108, 105, 99, 101]
+
+Then, again using decrypt, we converted these numbers to letters via chr. The message:
+'Dear Bob, Check this out.  https://www.schneier.com/blog/archives/2017/12/e-mail_tracking_1.html Yikes! Your friend, Alice'
+
+    Where we could have gone wrong:
+    If n were bigger and not only factorable by 2 single primes, there would have been many more options for p and q, and we would not have been able to efficiently solve for p and q, thus making the message unable to be decrypted. 
