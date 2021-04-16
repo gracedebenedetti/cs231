@@ -1,4 +1,4 @@
-**Bob perspective
+Grace de Benedetti and Skyler Kessenich
 
 1. Alice wants to send Bob a long message, and she doesn't want Eve to be able to read it. (I say "Eve" here because I want you to assume for this scenario that person-in-the-middle is impossible, and give an answer that is as simple as possible under that assumption.)
     Alice and Bob use Diffie-Hellman to agree on a shared secret key K, then Alice uses the function S(subscript K)(M) to encrypt the message to send to Bob. This plan achieves our goal of Alice sending a message to Bob without Eve being able to read it because Alice and Bob have exchanged a secret key K through Diffie-Hellman where Eve cannot access this key. Thus, when Alice uses the agreed upon key K to encrypt the message, Eve is unable to decrypt and read it. Bob will be able to read the message from Alice by decrypting the message using the secret key K and the decryption equation S(subscript K)(superscript -1)(S(subscript K)(M)).
