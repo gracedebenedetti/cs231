@@ -1,3 +1,5 @@
+**Bob perspective
+
 1. Alice wants to send Bob a long message, and she doesn't want Eve to be able to read it. (I say "Eve" here because I want you to assume for this scenario that person-in-the-middle is impossible, and give an answer that is as simple as possible under that assumption.)
     Alice and Bob use Diffie-Hellman to agree on a shared secret key K, then Alice uses the function S(subscript K)(M) to encrypt the message to send to Bob. This plan achieves our goal of Alice sending a message to Bob without Eve being able to read it because Alice and Bob have exchanged a secret key K through Diffie-Hellman where Eve cannot access this key. Thus, when Alice uses the agreed upon key K to encrypt the message, Eve is unable to decrypt and read it.
 
@@ -9,3 +11,5 @@
 
 4.Alice wants to send Bob a long message (in this case, it's a contract between AliceCom and BobCom). She doesn't want Eve to be able to read it. She wants Bob to have confidence that it was Alice who sent the message. She doesn't want Bob to be able to change the document and claim successfully in court that the changed version was the real version. And finally, Bob doesn't want Alice to be able to say in court that she never sent the contract in the first place.
     Alice and Bob agree on a secret key K using Diffie-Hellman. Alice then encrypts the message using S(subscript K)(M) so that Eve cannot read it. Alice then uses the hash function H(M) to get D and calculates her digital signature E(S(subscript A), D). She sends the encrypted message to Bob concatenated with her digital signature. Using the secret key K ensures Eve will not be able to read the message. Using the hash function to find D and creating a digital signature ensures both that the message has not been modified by anyone other than Alice, and Bob has proof that it was Alice who sent him the message, so Alice cannot claim she never sent it.
+
+    **assume mal is here problem 4
