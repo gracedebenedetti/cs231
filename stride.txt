@@ -1,3 +1,6 @@
+STRIDE assessment
+Skyler and Grace
+
 Data Flow Diagram:
 
 Spoofing:
