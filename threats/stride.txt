@@ -1,0 +1,42 @@
+STRIDE assessment
+Skyler and Grace
+
+Data Flow Diagram:
+
+Spoofing:
+
+1. If there is a spoofing threat, someone can get data relating to account information that includes credit card information, addresses, and names. The way to mitigate this issue is to implement a spoofing detector in the service to prevent user information from being attacked through spoofing.
+
+2. Geolocation spoofing could be another threat to the service. If people from other locations are able to access the database and add information about lemur sitings not around Northfield, it will affect the observations of lemurs in Northfield. We can prevent such an attack by user two factor authentication, location checks for users when they are logging in, and monitoring for large changes in data location sources or requests coming from different locations or the same information coming from different locations. All of these would indicate the possibility of a GPS spoofing attack. Also, for the android app, ensure mock locations is disabled. This should prevent malicious users from faking their location.
+
+Tampering:
+
+1. If someone gained access to the service and was able to adjust the information so that the lemur database was no longer accurate (deleting data or changing data), this could create security issues. We could avoid this tampering by requiring secure logins so that only people with accounts can access the service and only people with certain clearances are able to change the data.
+
+2. A malicious user could attack by adding falsified information to the database which ends up attacking the integrity of the database. We could prevent users from adding falsified information by using a "Copy-on-Write" file system. This type of system creates snapshots of the database each time a user adds new information. By monitoring these snapshots, we will be able to ensure the accuracy of the database and target users who are contributing false information.
+
+Repudiation:
+
+1. Distrust in the integrity of the data is another threat where people could change the data and/or claim that certain changes came from the original reliable source. The way to stop this from happening is to implement a hash function to ensure the integrity of the data. Using a hash function can ensure that the data has not been changed undetected since the data can be compared to the hash function.
+
+2. Malicious users could also make it appear that the data has come from the original source but they have actually made adjustments. To avoid this kind of attack, the hash function can be used again to create a digital signature. The digital signature is sent along with the data so that the source can be matched to the data and users can be sure it comes from the reliable source of the true DLN.
+
+Information Disclosure:
+
+1. If there is an eavesdropper, Eve will be able to catch information about users, such as credit cards and use this information for nefarious activities. To stop this eavesdropping from happening, the correspondence must be encrypted. This can be done by using HTTPS/TLS to encrypt all messages and ensure Eve cannot read the secret information.
+
+2. Eve could also perform an even more costly attack where she finds important, secret information and leaks all the data out to the world. This could include exposing peoples names, addresses, their credit card numbers, etc. To prevent such an attack, we must encrypt all the data on the site. Not only when it is being sent out but in storage as well. Encrypt all the data in the database so that even if Eve is able to elevate her privilege and access this information, it will all be encrypted and unreadable to her so she cannot leak it.
+
+Denial of Service:
+
+1. If the server is flooded by false requests for service, the real customers will lose access to the DLN, and the attack will stop service to the real people who want it. To stop the denial of service, we need to create a request anomaly detector that will detect when there are anomalies in requests. It will be able to detect these users and block them from access to the service which will keep access open to the real users.
+
+2. Another way to avoid this type of attack is to have someone constantly monitoring the network to look out for potential server overloads. This way, there is someone looking out for overflows of requests and monitoring to make sure all users maintain their access.
+
+Elevation of Privilege:
+
+1. If there is a malicious user, they could exploit unintended bugs in the service and find information that enables them to open access to changing the database, or deleting information or some other activity that they are not meant to have access to. We can prevent this kind of attack by encrypting everything in the software. This way, the malicious user will not be able to gain the information needed to create such an attack and will not gain elevated privileges.
+
+2. A malicious user could hack into another user's account. Again, we could prevent this by encrypting the data involved in the service so that the malicious user will not be able to access the login credentials of other users.
+
+3. Another way to prevent elevation of privilege attacks is to require users to make unguessable passwords to ensure the protection of their accounts.
