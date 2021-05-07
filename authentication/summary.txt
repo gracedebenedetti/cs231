@@ -1,0 +1,31 @@
+Part 1
+Passwords cracked: 1162
+
+Total time:
+real	0m0.759s
+user	0m0.695s
+sys	0m0.049s
+
+Number of hashes computed: 267751
+
+Passwords cracked per number of hashes computed: 0.0043
+
+Time per password cracked: 0.000598
+
+
+Part 2
+Passwords cracked:
+
+Total time: We predict it would take
+
+Number of hashes computed: [number of MD5's computed]
+
+
+Passwords cracked per number of hashes computed: [passwords per hash]
+
+
+Time per password cracked: [seconds per password]
+
+
+Factor by which your time per password lengthened, and why.
+[number and explanation]
