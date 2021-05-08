@@ -1,4 +1,4 @@
-Part 1
+Part 1 -- one word passwords only
 Passwords cracked: 1162
 
 Total time:
@@ -14,18 +14,18 @@ Time per password cracked: 0.000598
 
 
 Part 2
-Passwords cracked:
+Passwords cracked: 0
 
-Total time: We predict it would take
+Total time: We predict it would take length of two word password plus one word times how many passwords there are total
 
-Number of hashes computed: [number of MD5's computed]
-
-
-Passwords cracked per number of hashes computed: [passwords per hash]
+Number of hashes computed: We ran it on both our computers in an effort to speed up the processing, however, we only were able to computer 723x(the number of lines in the word.txt file) in 1.5 hours on one computer.
 
 
-Time per password cracked: [seconds per password]
+Passwords cracked per number of hashes computed: 0
+
+
+Time per password cracked: a very long time! We did not crack any passwords after running the program for a while.
 
 
 Factor by which your time per password lengthened, and why.
-[number and explanation]
+It would increase by the amount of passwords there are. The time would take as long as the first problem times the total number of passwords because
