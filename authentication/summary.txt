@@ -1,3 +1,6 @@
+
+***NOT our final submission. Our submission is in Skyler's repo***
+
 Part 1 -- one word passwords only
 Passwords cracked: 1162
 
